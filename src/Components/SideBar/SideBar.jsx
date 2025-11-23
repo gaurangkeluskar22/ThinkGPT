@@ -1,21 +1,35 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import './SideBar.css'
 import {assets} from '../../assets/assets'
+import { Context } from '../../Context/Context'
 
 const SideBar = () => {
 
     const [extended, setExtended] = useState(true)
+    const {  prevPrompt,
+        setPrevPrompt,
+        onSent,
+        recentPrompt,
+        setRecentPrompt,
+        showResult,
+        setShowResult,
+        loading,
+        setLoading,
+        resultData,
+        setResultData,
+    newChat} = useContext(Context)
 
-
-
-
+        const loadPrompt = async (prompt) => {
+            setRecentPrompt(prompt)
+            await onSent(prompt) 
+        }
 
 
     return (
         <div className="sidebar">
             <div className="top">
                 <img onClick={()=> setExtended((prev) => !prev )} className="menu" src={assets.menu_icon} alt="" />
-                <div className="new-chat">
+                <div className="new-chat" onClick={()=> newChat()}>
                     <img src={assets.plus_icon} alt="" />
                     {extended ? <p>New Chat</p> : null}
                 </div>
@@ -25,10 +39,16 @@ const SideBar = () => {
                     <p className="recent-title">
                         Recent
                     </p>
-                    <div className="recent-entry">
-                        <img src={assets.message_icon} alt="" />
-                        <p>What is react...</p>
-                    </div>
+                    {
+                        prevPrompt?.map((item)=>{
+                            return(
+                            <div className="recent-entry" key={item} onClick={()=>loadPrompt(item)}>
+                                <img src={assets.message_icon} alt="" />
+                                <p>{item.slice(0, 18)}...</p>
+                            </div>
+                            )
+                        })
+                    }
                 </div>
                 :
                 null
