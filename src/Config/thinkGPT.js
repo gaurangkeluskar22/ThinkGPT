@@ -8,7 +8,7 @@ async function main(prompt) {
   const response = await ai.getGenerativeModel({ model: "gemini-2.5-flash" })
     .generateContent(prompt);
 
-  console.log(response.response.text());
+  return response.response.text();
 }
 
 export default main;
