@@ -1,6 +1,6 @@
 
 
-import { createContext, useState } from "react";
+import { createContext, useState, useMemo } from "react";
 import main from "../Config/thinkGPT";
 
 export const Context = createContext();
@@ -15,8 +15,10 @@ const ContextProvider = (props) => {
     const [loading, setLoading] = useState(false)
     const [resultData, setResultData] = useState("")
 
-    const delayPara = () => {
-        
+    const delayPara = (index, nextWord) => {
+        setTimeout(function () {
+            setResultData((prev) => prev + nextWord)
+        }, 75 * index)
     }
 
     const newChat = () => {
@@ -28,23 +30,36 @@ const ContextProvider = (props) => {
     const onSent = async (prompt) => {
         setResultData("")
         setLoading(true)
+        setShowResult(true)
         let response;
-        if(prompt !== undefined){
+        if (prompt !== undefined) {
             response = await main(prompt);
             setRecentPrompt(prompt)
         }
-        else{
-            setPrevPrompt((prev)=> [...prev, input])
+        else {
+            setPrevPrompt((prev) => [...prev, input])
             setRecentPrompt(input)
             response = await main(input)
         }
-        setShowResult(true)
-        setResultData(res)
         setLoading(false)
         setInput("")
+        let responseArray = response.split("**");
+        let newResponse = "";
+        for (let i = 0; i < responseArray.length; i++) {
+            if (i === 0 || i % 2 !== 1) {
+                newResponse += responseArray[i];
+            }
+            else {
+                newResponse += "<b>" + responseArray[i] + "</b>";
+            }
+        }
+ 
+        let newResponse2 = newResponse.split("*").join("<br/>");
+        setResultData(newResponse2)
     }
 
-    const contextValue = {
+    // memoize the value object
+    const contextValue = useMemo(() => ({
         prevPrompt,
         setPrevPrompt,
         onSent,
@@ -59,9 +74,18 @@ const ContextProvider = (props) => {
         input,
         setInput,
         newChat
-    }
+    }), [
+        prevPrompt,
+        onSent,
+        recentPrompt,
+        showResult,
+        loading,
+        resultData,
+        input,
+        newChat
+    ]);
 
-    return(
+    return (
         <Context.Provider value={contextValue}>
             {props.children}
         </Context.Provider>

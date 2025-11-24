@@ -17,6 +17,7 @@
 
 .main .nav img{
     width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 
@@ -60,9 +61,10 @@
     width: 35px;
     padding: 5px;
     position: absolute;
-    border-color: 20px;
+    border-radius: 20px;
     bottom: 10px;
     right: 10px;
+    background: white;
 }
 
 .main .card p{
@@ -137,7 +139,7 @@
 }
 
 .result-title{
-    margin: 50px 0px;
+    margin: 10px 0px;
     display: flex;
     align-items: center;
     gap: 20px;
@@ -146,6 +148,7 @@
 
 .result img{
     width: 40px;
+    height: 40px;
     border-radius: 50%;
 
 }
@@ -186,5 +189,37 @@
 .result-data p{
     font-size: 1rem;
     font-weight: 300;
-    line-height: 1.8px;
+    /* line-height: 1.8px; */
+}
+
+@media screen and (max-width: 600px) {
+    .main-bottom input{
+        flex: none;
+        width: 100px;
+    }
+
+    .main-bottom img{
+        width: 20px;
+    }
+
+    .search-box{
+        padding: 5px 10px;
+    }
+
+    .search-box div{
+        gap: 5px;
+    }
+
+    .main .cards{
+        margin-bottom: 1.5rem;
+    }
+
+    .main .greet{
+        margin: 0;
+        font-size: 2rem;
+    }
+
+    .main .card{
+        height: 150px;
+    }
 }
