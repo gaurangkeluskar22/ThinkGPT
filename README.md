@@ -1,16 +1,52 @@
-# React + Vite
+# 🤖 ThinkGPT — Gemini-Powered AI Chat App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+ThinkGPT is a modern AI chat application inspired by Google Gemini.  
+It uses the latest **Google Generative AI API** to generate fast, smart, and natural responses — similar to Gemini chat experience.
 
-Currently, two official plugins are available:
+Built using **React**, this project focuses on real-time streaming replies, smooth loading effects, and a clean UI design.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## ✨ Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- 🚀 Gemini 2.x Flash model integration
+- 💬 Real-time streaming responses (word-by-word typing effect)
+- 📌 Maintains recent prompt history
+- ⚡ Optimized rendering using Context + Memoization
+- 🔐 Secure API key stored in `.env`
+- 🎨 Simple and elegant UI design
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+
+| Technology | Role |
+|-----------|------|
+| React + Vite | Frontend Framework |
+| Google Generative AI SDK | Connect with Gemini Model |
+| Context API | Global State Management |
+| CSS | Styling |
+
+---
+
+
+## 🔑 Environment Setup
+
+Create a `.env` file in the project root:
+
+VITE_GEMINI_API_KEY=your_api_key_here
+
+> You can get the API key for free from **Google AI Studio**
+
+Install dependencies:
+
+```bash
+npm install
+
+```
+Start development server:
+
+```bash
+Copy code
+npm run dev
+
