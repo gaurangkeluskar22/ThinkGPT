@@ -5,6 +5,7 @@ It uses the latest **Google Generative AI API** to generate fast, smart, and nat
 
 Built using **React**, this project focuses on real-time streaming replies, smooth loading effects, and a clean UI design.
 
+URL:- https://thinkgptproject.vercel.app/
 ---
 ## Images
 <img width="1918" height="968" alt="image" src="https://github.com/user-attachments/assets/0e8431bc-1a23-42ff-969d-a88a68f7b82c" />
